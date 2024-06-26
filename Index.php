@@ -8,8 +8,8 @@
 <body>
     <?php
         include 'conexion.php';
-        $sql="select * from Menus";
-        $resultado=mysql_query($sql);
+        $sqli="select * from Menus";
+        $resultado=mysqli_query($conexion, $sqli);
     ?>
     <div>
         <a href="agregar.php">Nuevo</a>
@@ -24,7 +24,7 @@
                 </tr>
             </thead>
             <tbody>
-                <?php while ($filas=mysql_fetch_assoc($resultado)){
+                <?php while ($filas=mysqli_fetch_assoc($resultado)){
                  ?>
                 <tr>
                     <td><?php echo $filas['ID']?></td>
@@ -32,8 +32,8 @@
                     <td><?php echo $filas['Menu_Padre']?></td>
                     <td><?php echo $filas['Descripción']?></td>
                     <td>
-                        <a href="">Editar</a>
-                        <a href="">Eliminar</a>
+                        <a href="editar.php?id=<?php echo $filas['ID']?>">Editar</a>
+                        <a href="eliminar.php?id=<?php echo $filas['ID']?>">Eliminar</a>
                     </td>
                 </tr>
                 <?php } ?>
